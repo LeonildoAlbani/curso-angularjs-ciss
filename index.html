@@ -1,25 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 	<title>Curso AngularJS</title>
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/myApp.js"></script>
+	<script type="text/javascript" src="js/controller/formCtrl.js"></script>
 </head>
-<body>
-	<div class="container">
+<body ng-controller="FormCtrl">
+	<div class="container" >
 		<div class="jumbotron">
 			<div class="formgroup">
-				<legend>Dados pessois</legend>
-				<div class="row">
-				<div class="form-group col-xs-12 col-md-6">
-					<label for="name">Nome</label>
-					<input type="text" class="form-control" id="name" placeholder="Nome">
-				</div>
-				<div class="form-group col-xs-12 col-md-6">
-					<label for="lastname">Sobrenome</label>
-					<input type="text" class="form-control" id="lastname" placeholder="Sobrenome">
-				</div>
-				</div>
+				<legend >Dados pessoais</legend>
+				<form class="row">
+					<div class="form-group col-xs-12 col-md-6">
+						<label for="name">Nome</label>
+						<input type="text" class="form-control" id="name" placeholder="Nome" ng-model="person.name">
+					</div>
+					<div class="form-group col-xs-12 col-md-6">
+						<label for="lastname">Sobrenome</label>
+						<input type="text" class="form-control" id="lastname" placeholder="Sobrenome" ng-model="person.lastname">
+					</div>
+
+
+
+					<div class="form-group col-xs-12 col-md-6">
+						<label for="age">Idade</label>
+						<input type="number" class="form-control" id="age" placeholder="Idade" ng-model="person.age">
+					</div>
+					<div class="form-group col-xs-12 col-md-6">
+						<label for="email">E-mail</label>
+						<input type="email" class="form-control" id="email" placeholder="E-mail" ng-model="person.email">
+					</div>
+					<div class="form-group col-xs-12 col-md-6">
+						<label for="phone">Telefone</label>
+						<input type="text" class="form-control" id="phone" placeholder="Telefone" ng-model="person.phone">
+					</div>
+				</form>
+				
+				<!--<p><strong ng-bind="person.name || 'Nome não cadastrado'"></strong> </p>-->
+				<p ng-if="person.name"><strong ng-bind="person.name"></strong> </p>
+				<p ng-if="person.lastname"><strong ng-bind="person.lastname"></strong></p>
+				<p ng-if="person.age"><strong ng-bind="person.age"></strong></p>
+				<p ng-if="person.email"><strong ng-bind="person.email"></strong></p>
+				<p ng-if="person.phone"><strong ng-bind="person.phone"></strong></p>
+				<p>{{person}}</p>
 			</div>
 		</div>
 	</div>
