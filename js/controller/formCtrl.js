@@ -5,11 +5,11 @@ function FormCtrl($scope) {
 	$scope.clicouEditar = false;
 
 	$scope.tarefas=[{
-		check: true,
+		check: false,
 		tarefa: "leite",
 		datacriacao: new Date().getTime()
 	},{
-		check: true,
+		check: false,
 		tarefa: "bem louco",
 		datacriacao: new Date().getTime()
 	},{
@@ -48,6 +48,18 @@ function FormCtrl($scope) {
 			$scope.renomear = undefined;
 			$scope.clicouEditar = false;
 		}
+	}
+
+	$scope.cancelarRenomeacao = function( ){
+		$scope.indexTarefa = undefined;
+		$scope.renomear = undefined;
+		$scope.clicouEditar = false;
+	}
+
+	$scope.removerTarefa = function( dataIndex ){
+		console.log(dataIndex);
+		$scope.tarefas.splice(dataIndex, 1);
+		$scope.cancelarRenomeacao();
 	}
 }
 
